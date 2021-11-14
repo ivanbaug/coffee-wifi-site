@@ -216,3 +216,5 @@ cython_debug/
 .vscode/*
 venv/*
 .env
+*test.py
+cafes.db
