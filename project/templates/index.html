@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>testing...</h1>
+{% for cafe in all_cafes %}
+
+<h2>{{cafe.name}}</h2>
+
+{% endfor %}
 <!-- 
 <h1>testing...</h1>
 <h1>testing...</h1>
