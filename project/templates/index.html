@@ -1,40 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>testing...</h1>
-{% for cafe in all_cafes %}
+<h2>Beautiful places</h2>
 
-<h2>{{cafe.name}}</h2>
+{% if all_cafes %}
+  {% from 'cards.html' import cafe_card as show_cafe %}
+  {% for cafe in all_cafes %}
+    {{show_cafe(cafe)}}
+  {% endfor %}
+{% endif %}
 
-{% endfor %}
-<!-- 
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1>
-<h1>testing...</h1> -->
 
 {% endblock content %}
