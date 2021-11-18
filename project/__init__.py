@@ -16,11 +16,13 @@ def create_app(config_file=CONFIG_FILE):
     db.init_app(app)
 
     # Import db models
+    from .models import User
     from .models import Cafe
+    from .models import Comment
 
     ### 2 Lines below only required once, when creating DB. ####
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
 
     # blueprint for non-auth parts of app
     from .views import main as main_blueprint
