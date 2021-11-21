@@ -26,3 +26,6 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password:", validators=[InputRequired()])
     remember = BooleanField("Remember me")
     submit = SubmitField("Log In")
+
+# TODO: New cafe form
+# TODO: New comment form
