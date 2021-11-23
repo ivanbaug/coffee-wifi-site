@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+
+
+<div class="card mx-auto my-5 new-cafe-card">
+  <div class="card-header text-white text-center card-header-custom">
+    <strong>New Cafe Details</strong>
+  </div>
+  <div class="card-body ">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form method="POST" action="/new-cafe" class="d-grid gap-1">
+      {{ form.csrf_token }}
+      <div class="form-group">
+        <label>{{form.name.label}}</label>
+        {{ form.name(class='form-control') }}
+      </div>
+      <div class="form-group">
+        <label>{{form.map_url.label}}</label>
+        {{ form.map_url(class='form-control') }}
+      </div>
+      <div class="form-group">
+        <label>{{form.img_url.label}}</label>
+        {{ form.img_url(class='form-control') }}
+      </div>
+      <div class="form-group">
+        <label>{{form.location.label}}</label>
+        {{ form.location(class='form-control') }}
+      </div>
+      <div class="form-group">
+        <label>{{form.seats.label}}</label>
+        {{ form.seats(class='form-control') }}
+      </div>
+      <div class="form-check form-switch">
+        {{ form.has_toilet(class='form-check-input',) }}
+        <label>{{form.has_toilet.label}}</label>
+      </div>
+      <div class="form-check form-switch">
+        {{ form.has_wifi(class='form-check-input',) }}
+        <label>{{form.has_wifi.label}}</label>
+      </div>
+      <div class="form-check form-switch">
+        {{ form.has_sockets(class='form-check-input',) }}
+        <label>{{form.has_sockets.label}}</label>
+      </div>
+      <div class="form-check form-switch">
+        {{ form.can_take_calls(class='form-check-input',) }}
+        <label>{{form.can_take_calls.label}}</label>
+      </div>
+      <div class="form-group">
+        <label>{{form.price.label}}</label>
+        {{ form.price(class='form-control') }}
+      </div>
+      <div class="float-right">
+        {{ form.submit(class='btn btn-success') }}
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+{% endblock content %}

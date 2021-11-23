@@ -27,13 +27,13 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 login_user(user)
-                return redirect(url_for("get_all_posts"))
+                return redirect(url_for("main.index"))
             else:
                 flash("Wrong password or user, please try again.")
-                return redirect(url_for("login"))
+                return redirect(url_for("auth.login"))
         else:
             flash("Wrong user or password, please try again.")
-            return redirect(url_for("login"))
+            return redirect(url_for("auth.login"))
 
     return render_template("login.html", form=form)
 
@@ -51,7 +51,7 @@ def signup():
             # Send flash messsage
             flash("You've already signed up with that email, log in instead!")
             # Redirect to /login route.
-            return redirect(url_for("login"))
+            return redirect(url_for("auth.login"))
 
         hash_and_salted_password = generate_password_hash(
             nform.password.data, method="pbkdf2:sha256", salt_length=8
@@ -72,5 +72,11 @@ def signup():
         return redirect(url_for("main.index"))
     if request.method == "POST":
         # Send flash messsage
-        flash("Error, check the submitted data, did you confirmed your password?")
+        flash("Error, check the submitted data, did you confirm your password?")
     return render_template("signup.html", form=nform)
+
+
+@auth.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for("main.index"))
