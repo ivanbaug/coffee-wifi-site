@@ -38,9 +38,6 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Log In")
 
 
-# TODO: New cafe form
-
-
 class NewCafeForm(FlaskForm):
     name = StringField("New cafe name:", validators=[DataRequired()])
     map_url = StringField("Google maps url:", validators=[DataRequired()])
@@ -50,8 +47,8 @@ class NewCafeForm(FlaskForm):
     has_toilet = BooleanField("Has toilets?")
     has_wifi = BooleanField("Has wifi?")
     has_sockets = BooleanField("Has sockets?")
-    can_take_calls = BooleanField("Can ou take calls there?")
-    price = StringField("Coffee cup price (optional):")
+    can_take_calls = BooleanField("Can you take calls there?")
+    coffee_price = StringField("Coffee cup price (optional):")
     submit = SubmitField("Add Cafe")
 
 

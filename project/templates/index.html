@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Beautiful places</h2>
 
+<div class="container">
+<h2 class="my-4">Beautiful places</h2>
 {% if all_cafes %}
   {% from 'cards.html' import cafe_card as show_cafe %}
   {% for cafe in all_cafes %}
-    {{show_cafe(cafe)}}
+    {{show_cafe(cafe, current_user)}}
   {% endfor %}
 {% endif %}
-
+</div>
 {% endblock content %}

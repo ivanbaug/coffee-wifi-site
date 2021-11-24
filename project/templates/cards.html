@@ -1,8 +1,8 @@
-{% macro cafe_card(cafe) -%}
-<div class="card mb-3" style="max-width: 540px;">
+{% macro cafe_card(cafe,current_user) -%}
+<div class="card mb-3 mx-auto" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{cafe.img_url}}" class="img-fluid rounded-start" alt="{{cafe.name}}">
+      <img src="{{cafe.img_url}}" class="img-fluid rounded-start card-img-top" alt="{{cafe.name}}">
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -10,16 +10,20 @@
         <p class="card-text">
           <b>Location:</b>{{cafe.location}} (<a href="{{cafe.map_url}}">map</a>)
           <br>
-          <b>Seats:</b>{{cafe.seats}}&emsp; 
+          <b>Seats:</b>{{cafe.seats}}&emsp;
           <b>WiFi:</b>{{"Yes" if cafe.has_wifi else "No"}}
           <br>
-          <b>Toilets:</b>{{"Yes" if cafe.has_toilets else "No"}}&emsp;
+          <b>Toilets:</b>{{"Yes" if cafe.has_toilet else "No"}}&emsp;
           <b>Sockets:</b>{{"Yes" if cafe.has_sockets else "No"}}
           <br>
           <b>Can take calls?:</b>{{"Yes" if cafe.can_take_calls else "No"}}
         </p>
         {%if cafe.coffee_price%}
-          <p class="card-text"><b>Coffee price:</b>{{cafe.coffee_price}}</p>
+        <p class="card-text"><b>Coffee price:</b>{{cafe.coffee_price}}</p>
+        {%endif%}
+        {% if  (cafe.author_id == current_user.id) or (current_user.id == 1) %}
+        <a class="fs-6 text-secondary" href="{{url_for('main.delete_cafe', cafe_id=cafe.id) }}">Delete this
+          cafe ✘</a>
         {%endif%}
       </div>
     </div>
