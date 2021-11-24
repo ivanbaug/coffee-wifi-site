@@ -4,4 +4,4 @@ Site for sharing coffee shops with wifi to work
 - First user is admin
 - Only authors and admin can delete posts
 
-[screenshot](ivanbaug.github.com/coffee-wifi-site/img/screenshot.png)
+![screenshot](https://github.com/ivanbaug/coffee-wifi-site/blob/main/img/screenshot.png?raw=true)
